@@ -1,0 +1,140 @@
+services:
+
+  # =========================
+  # Spring Boot
+  # =========================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devops-app
+    ports:
+      - "8081:8080"
+    networks:
+      - monitoring
+      - graylog
+
+  # =========================
+  # Prometheus
+  # =========================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      - monitoring
+    depends_on:
+      - app
+
+  # =========================
+  # Grafana
+  # =========================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring
+    depends_on:
+      - prometheus
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  # =========================
+  # MongoDB
+  # =========================
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: unless-stopped
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - graylog
+
+  # =========================
+  # OpenSearch
+  # =========================
+  opensearch:
+    image: opensearchproject/opensearch:2.19.6
+    container_name: opensearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g
+      - action.auto_create_index=false
+      - plugins.security.disabled=true
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=DevSecOps@2026!
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    networks:
+      - graylog
+
+  # =========================
+  # Graylog
+  # =========================
+  graylog:
+    image: graylog/graylog:7.1
+    container_name: graylog
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+      - opensearch
+    entrypoint: "/usr/bin/tini -- wait-for-it opensearch:9200 -- /docker-entrypoint.sh"
+    environment:
+      GRAYLOG_NODE_ID_FILE: /usr/share/graylog/data/config/node-id
+      GRAYLOG_HTTP_BIND_ADDRESS: 0.0.0.0:9000
+      GRAYLOG_HTTP_EXTERNAL_URI: http://127.0.0.1:9000/
+      GRAYLOG_ELASTICSEARCH_HOSTS: http://opensearch:9200
+      GRAYLOG_MONGODB_URI: mongodb://mongodb:27017/graylog
+
+      # Obrigatório para o Graylog
+      GRAYLOG_PASSWORD_SECRET: "devsecops-password-secret-2026"
+
+      # Senha do usuário admin:
+      # admin
+      GRAYLOG_ROOT_PASSWORD_SHA2: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+
+    ports:
+      - "9000:9000"
+      - "12201:12201/tcp"
+      - "12201:12201/udp"
+    volumes:
+      - graylog_data:/usr/share/graylog/data
+    networks:
+      - graylog
+
+
+# =========================
+# Volumes
+# =========================
+volumes:
+  grafana_data:
+  mongodb_data:
+  mongodb_config:
+  opensearch_data:
+  graylog_data:
+
+
+# =========================
+# Networks
+# =========================
+networks:
+  monitoring:
+    driver: bridge
+
+  graylog:
+    driver: bridge
