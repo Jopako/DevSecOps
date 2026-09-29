@@ -13,7 +13,10 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        logger.info("Endpoint /hello foi acessado");
+        logger.debug("DEBUG: iniciando processamento do endpoint /hello");
+        logger.info("INFO: endpoint /hello foi acessado");
+        logger.error("ERROR: exemplo de log de erro para observabilidade");
+
         return "DevSecOps Spring Boot funcionando!";
     }
 }

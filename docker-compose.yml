@@ -24,6 +24,7 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
     networks:
       - monitoring
     depends_on:
@@ -122,12 +123,12 @@ services:
 # Volumes
 # =========================
 volumes:
+  prometheus_data:
   grafana_data:
   mongodb_data:
   mongodb_config:
   opensearch_data:
   graylog_data:
-
 
 # =========================
 # Networks
