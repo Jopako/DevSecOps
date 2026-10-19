@@ -143,9 +143,7 @@ docker compose ps
 
 Acesse os endereços descritos na seção [Arquitetura](#arquitetura).
 
-### Credenciais
-
-Use as credenciais definidas na configuração local do ambiente. Senhas, tokens e outras credenciais não devem ser adicionados ao repositório nem publicados em capturas de tela. Caso sejam utilizadas variáveis de ambiente, mantenha os valores secretos fora do Git e documente apenas os nomes das variáveis necessárias.
+---
 
 ### Configuração inicial de observabilidade
 
