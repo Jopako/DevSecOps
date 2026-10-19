@@ -269,8 +269,6 @@ docker compose logs --tail=100 app
 
 ## Evidências
 
-As capturas devem ser adicionadas manualmente ao repositório em `docs/evidencias/`, com os nomes abaixo. Substitua ou atualize as imagens conforme as capturas reais do ambiente. Não inclua senhas, tokens nem outros dados secretos nas imagens.
-
 ### Aplicação — Observatório Astronômico
 
 <img width="1437" height="984" alt="site" src="https://github.com/user-attachments/assets/6af3ef60-8691-4e00-b366-d56e76bde5d8" />
@@ -306,33 +304,3 @@ Parar os serviços sem apagar os dados persistidos:
 docker compose down
 ```
 
-> Evite `docker compose down -v` quando quiser preservar os dados do Grafana, Prometheus, Graylog, MongoDB e OpenSearch: a opção `-v` remove os volumes nomeados do projeto.
-
-## Solução de problemas
-
-**A aplicação não abre em `localhost:8081`**
-
-```bash
-docker compose ps
-docker compose logs --tail=100 app
-```
-
-Confira se o serviço `app` está ativo e se a porta host `8081` está mapeada para a porta `8080` do container.
-
-**O target do Prometheus está `DOWN`**
-
-Confira se o scrape usa o endereço interno `app:8080` e se `/actuator/prometheus` está acessível dentro da rede do Compose. No container Prometheus, `localhost` significa o próprio container, não o Spring Boot.
-
-**Não aparecem mensagens no Graylog**
-
-Confirme que o serviço Graylog está saudável, que existe uma entrada **GELF UDP** ativa na porta `12201` e que a aplicação consegue resolver o host `graylog` pela rede Docker. Consulte também `docker compose logs --tail=100 app`.
-
-**O dashboard está sem dados**
-
-Confirme que o target do Prometheus está `UP`, que o Data Source do Grafana aponta para `http://prometheus:9090`, que o dashboard usa as métricas exportadas pela aplicação e que houve tráfego HTTP no período selecionado.
-
----
-
-## Observação sobre credenciais e configuração reproduzível
-
-O repositório deve conter arquivos de configuração, e não credenciais pessoais. Para que uma instalação nova satisfaça integralmente o requisito de inicialização sem intervenção manual, o Data Source e dashboard do Grafana, bem como a entrada GELF do Graylog, devem estar provisionados por arquivos versionados ou outro mecanismo automatizado compatível com a stack. A configuração que existe apenas em volumes criados manualmente no ambiente de desenvolvimento não é automaticamente reproduzida em uma máquina limpa.
