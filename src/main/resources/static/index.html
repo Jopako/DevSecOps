@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b1a">
+  <meta name="description" content="Conheça o Observatório Astronômico de Videira, explore o céu e acompanhe eventos astronômicos.">
+  <title>Observatório de Videira | Explorando o universo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <div class="starfield" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Observatório de Videira, início">
+      <span><strong>OBSERVATÓRIO</strong></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+      <a href="#sobre">O observatório</a>
+      <a href="#explorar">Explorar</a>
+      <a href="#eventos">Eventos</a>
+      <a class="nav-cta" href="#contato">Entre em contato <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="inicio">
+      <div class="hero-copy">
+        <h1 class="observatory-wordmark" aria-label="Polo Astronômico Videira">
+          <span class="wordmark-line wordmark-polo"><span>POLO</span><span class="wordmark-rule" aria-hidden="true"></span></span>
+          <span class="wordmark-astro">ASTRONÔ</span>
+          <span class="wordmark-line wordmark-mico"><span class="wordmark-rule" aria-hidden="true"></span><span>MICO</span></span>
+          <span class="wordmark-city">VIDEIRA</span>
+        </h1>
+        <p class="hero-description">Olhe para cima. Descubra os mistérios do universo e desperte sua curiosidade pelo cosmos, aqui em Videira, Santa Catarina.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#explorar">Explore o universo <span>↗</span></a>
+          <a class="text-link" href="#sobre">Conheça o observatório <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Ilustração de um planeta com anéis diante de um céu estrelado">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="planet-glow"></div><div class="planet"><div class="planet-ring"></div><div class="planet-shadow"></div></div>
+        <span class="star star-a">✦</span><span class="star star-b">✧</span><span class="star star-c">✦</span><span class="star star-d">·</span>
+        <div class="art-label"><span class="label-line"></span></div>
+      </div>
+    </section>
+
+    <section class="intro section-wrap" id="sobre">
+      <div class="intro-content">
+        <h2>Uma cidade.<br><em>Um universo inteiro.</em></h2>
+        <div class="intro-text">
+          <p>A astronomia nos convida a enxergar além do que está diante dos nossos olhos. É uma jornada de descoberta que começa com uma pergunta e pode nos levar aos confins do universo.</p>
+          <p>Esta página é um ponto de encontro para quem quer aprender, observar e se encantar com o céu de Videira.</p>
+          <a class="underlined-link" href="#contato">Vamos olhar para cima juntos <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore section-wrap" id="explorar">
+      <div class="section-heading">
+        <div><div class="section-kicker"></div><h2>O que existe <em>lá fora?</em></h2></div>
+      </div>
+      <div class="explore-grid">
+        <article class="cosmos-card moon-card">
+          <div class="card-visual moon-visual">
+            <img
+              class="cosmos-image cosmos-image-moon"
+              src="https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?q=80&amp;w=1373&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=NHwxMjA3fDA%3D"
+              alt="Fotografia da Lua cheia"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <div class="card-copy"><h3>A Lua</h3><p>Crateras, fases e paisagens que contam a história do nosso companheiro celeste.</p><a href="https://science.nasa.gov/moon/" target="_blank" rel="noreferrer">Descobrir a Lua <span>↗</span></a></div>
+        </article>
+        <article class="cosmos-card planet-card">
+          <div class="card-visual planet-visual">
+            <img
+              class="cosmos-image cosmos-image-planet"
+              src="https://upload.wikimedia.org/wikipedia/commons/2/28/Saturn.png"
+              alt="Saturno e seus anéis"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <div class="card-copy"><h3>Os planetas</h3><p>Mundos fascinantes, cada um com características e segredos próprios.</p><a href="https://science.nasa.gov/solar-system/planets/" target="_blank" rel="noreferrer">Conhecer os planetas <span>↗</span></a></div>
+        </article>
+        <article class="cosmos-card galaxy-card">
+          <div class="card-visual galaxy-visual">
+            <img
+              class="cosmos-image cosmos-image-galaxy"
+              src="https://upload.wikimedia.org/wikipedia/commons/8/83/Galaxy.png?utm_source=commons.wikimedia.org&amp;utm_campaign=index&amp;utm_content=original"
+              alt="Fotografia da galáxia espiral M51"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <div class="card-copy"><h3>As galáxias</h3><p>Bilhões de estrelas reunidas em estruturas que atravessam o espaço e o tempo.</p><a href="https://science.nasa.gov/universe/galaxies/" target="_blank" rel="noreferrer">Viajar pelas galáxias <span>↗</span></a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="quote-mark">“</div>
+      <blockquote>Em algum lugar, algo incrível está esperando para ser descoberto.</blockquote>
+        <div class="quote-mark">”</div>
+
+        <p>CARL SAGAN · A CURIOSIDADE É O COMEÇO DE TUDO</p>
+
+    </section>
+
+    <section class="events section-wrap" id="eventos">
+      <div class="section-heading event-heading">
+        <div><h2>O céu não para.<br><em>E a descoberta também não.</em></h2></div>
+      </div>
+      <div class="event-row">
+        <div class="event-symbol">☾</div><div><h3>Fases da Lua</h3><p>Acompanhe as mudanças de iluminação do nosso satélite natural.</p></div><a href="https://science.nasa.gov/moon/moon-phases/" target="_blank" rel="noreferrer" aria-label="Consultar fases da Lua">↗</a>
+      </div>
+      <div class="event-row">
+        <div class="event-symbol">✧</div><div><h3>Fenômenos astronômicos</h3><p>Descubra chuvas de meteoros, eclipses e outros eventos previstos.</p></div><a href="https://science.nasa.gov/skywatching/" target="_blank" rel="noreferrer" aria-label="Consultar eventos astronômicos">↗</a>
+      </div>
+    </section>
+
+    <section class="contact section-wrap" id="contato">
+      <div class="contact-panel">
+        <div class="contact-copy"><h2>Seu lugar no universo<br>começa com <em>uma pergunta.</em></h2></div>
+        <a class="button button-light" href="https://www.instagram.com/poloastronomicodevideira/?hl=en" target="_blank" rel="noreferrer">Nosso Observatório <span>↗</span></a>
+        <div class="contact-orb" aria-hidden="true"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#inicio"><span><strong>OBSERVATÓRIO</strong><small>VIDEIRA · SANTA CATARINA</small></span></a>
+    <a class="back-top" href="#inicio">VOLTAR AO TOPO ↑</a>
+  </footer>
+</body>
+</html>
