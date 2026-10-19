@@ -273,27 +273,28 @@ As capturas devem ser adicionadas manualmente ao repositório em `docs/evidencia
 
 ### Aplicação — Observatório Astronômico
 
-![Frontend do Observatório Astronômico](docs/evidencias/01-observatorio.png)
+<img width="1437" height="984" alt="site" src="https://github.com/user-attachments/assets/6af3ef60-8691-4e00-b366-d56e76bde5d8" />
+
 
 ### Dashboard Grafana
 
-![Dashboard de métricas no Grafana](docs/evidencias/02-grafana-dashboard.png)
+<img width="1377" height="899" alt="grafana" src="https://github.com/user-attachments/assets/1824923c-d22b-4a35-bf71-cbb9d2392420" />
 
 ### Prometheus — targets
 
-![Prometheus com target da aplicação em estado UP](docs/evidencias/03-prometheus-targets.png)
+<img width="819" height="294" alt="Prometheus" src="https://github.com/user-attachments/assets/676454cd-16e4-4490-9904-034cf30511a0" />
 
 ### Graylog — mensagens da aplicação
 
-![Mensagens HTTP da aplicação no Graylog](docs/evidencias/04-graylog-mensagens.png)
+<img width="1597" height="872" alt="graylog" src="https://github.com/user-attachments/assets/e3ba174c-410a-4e35-96af-b9305c79e6af" />
 
 ### GitHub Actions — pipeline CI/CD
 
-![Execução da pipeline CI/CD no GitHub Actions](docs/evidencias/05-github-actions.png)
+<img width="1260" height="437" alt="workflows" src="https://github.com/user-attachments/assets/2a353ba1-5c54-47ad-bf39-c9e63ff0066f" />
 
 ### Docker Compose — serviços em execução
 
-![Serviços do Docker Compose em execução](docs/evidencias/06-docker-compose.png)
+<img width="1306" height="270" alt="dockerps" src="https://github.com/user-attachments/assets/2ae713a7-c29b-49e7-bfcb-c5166e363463" />
 
 ## Persistência e encerramento
 
